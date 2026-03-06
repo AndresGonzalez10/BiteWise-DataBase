@@ -18,7 +18,8 @@ CREATE TABLE ingredients (
     name VARCHAR(100) UNIQUE NOT NULL,
     category VARCHAR(50) NOT NULL,
     unit_price DECIMAL(10,4) NOT NULL DEFAULT 0,
-    unit_default VARCHAR(10) NOT NULL DEFAULT 'g'
+    unit_default VARCHAR(10) NOT NULL DEFAULT 'g',
+    weight_per_unit DECIMAL(10,2) NOT NULL DEFAULT 1.00
 );
 
 -- 3. Inventario del Usuario 
