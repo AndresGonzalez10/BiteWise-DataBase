@@ -1,4 +1,3 @@
--- Habilitar extensión para IDs únicos (UUID)
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- 1. Usuarios 
@@ -40,7 +39,8 @@ CREATE TABLE recipes (
     instructions TEXT NOT NULL,
     image_url TEXT,
     is_custom BOOLEAN DEFAULT false,
-    author_id UUID REFERENCES users(id) ON DELETE CASCADE, 
+    author_id UUID REFERENCES users(id) ON DELETE CASCADE,
+    servings VARCHAR(10) DEFAULT '1-2',  
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -67,4 +67,12 @@ CREATE TABLE shopping_list_items (
     ingredient_id INTEGER REFERENCES ingredients(id),
     target_quantity DECIMAL(10,2) NOT NULL,
     total_price DECIMAL(10,2) NOT NULL DEFAULT 0 
+);
+
+-- 8. NUEVO: Historial de Compras 
+CREATE TABLE purchase_history (
+    id SERIAL PRIMARY KEY,
+    user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+    total_cost DECIMAL(10,2) NOT NULL,
+    purchased_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

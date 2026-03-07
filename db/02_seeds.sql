@@ -1,8 +1,4 @@
--- 1. USUARIO DE PRUEBA 
-INSERT INTO users (id, name, email, password_hash, role) VALUES 
-('e58000a6-6735-443f-b02e-8a7c88872493', 'Andres', 'andres@test.com', 'hash123', 'estudiante');
-
--- 2. INGREDIENTES INVESTIGADOS CON PESO UNITARIO
+-- 1. INGREDIENTES INVESTIGADOS CON PESO UNITARIO
 INSERT INTO ingredients (name, category, unit_price, unit_default, weight_per_unit) VALUES
 ('Tomate', 'Verduras', 0.0300, 'g', 120.00),
 ('Cebolla', 'Verduras', 0.0190, 'g', 150.00),
@@ -20,12 +16,16 @@ INSERT INTO ingredients (name, category, unit_price, unit_default, weight_per_un
 ('Leche Entera', 'Lácteos', 0.0370, 'ml', 1000.00),
 ('Aceite Vegetal', 'Abarrotes', 0.0450, 'ml', 15.00);
 
--- 3. RECETAS
+-- 2. RECETAS
 INSERT INTO recipes (title, instructions) VALUES 
 ('Huevos a la Mexicana', '1. Picar tomate, cebolla y chile. 2. Sofreír en aceite. 3. Agregar los huevos y revolver.'),
-('Arroz con Pollo', '1. Hervir la pechuga. 2. Sofreír el arroz. 3. Cocer todo junto con caldo de pollo.');
+('Arroz con Pollo', '1. Hervir la pechuga. 2. Sofreír el arroz. 3. Cocer todo junto con caldo de pollo.'),
+('Ensalada Fresca de Atún', '1. Drenar el atún. 2. Picar finamente la cebolla y el tomate. 3. Mezclar todo con el jugo de limón y un toque de chile picado.'),
+('Espagueti con Pollo al Ajillo', '1. Hervir la pasta hasta que esté al dente. 2. Picar el ajo finamente y sofreírlo en aceite junto con la pechuga cortada en cubos. 3. Mezclar la pasta con el pollo y agregar queso Oaxaca deshebrado por encima.');
 
--- 4. INGREDIENTES DE RECETAS
+-- 3. INGREDIENTES DE RECETAS
+
+-- Receta 1: Huevos a la Mexicana
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, required_quantity) VALUES
 (1, 8, 114.00), -- 2 huevos (2 * 57g)
 (1, 1, 120.00), -- 1 tomate
@@ -33,8 +33,25 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, required_quantity) VAL
 (1, 5, 15.00),  -- 1 chile
 (1, 15, 15.00); -- 1 cucharada aceite
 
+-- Receta 2: Arroz con Pollo
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, required_quantity) VALUES
 (2, 7, 400.00), -- 2 pechugas
 (2, 10, 150.00), -- 150g arroz
-(2, 2, 50.00),
-(2, 15, 15.00);
+(2, 2, 50.00),  -- un tercio de cebolla
+(2, 15, 15.00); -- 1 cucharada aceite
+
+-- Receta 3: Ensalada Fresca de Atún
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, required_quantity) VALUES
+(3, 9, 140.00), -- 1 lata de atún
+(3, 1, 120.00), -- 1 tomate
+(3, 2, 50.00),  -- un tercio de cebolla
+(3, 4, 30.00),  -- medio limón (30g de jugo aprox)
+(3, 5, 15.00);  -- 1 chile picadito
+
+-- Receta 4: Espagueti con Pollo al Ajillo
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, required_quantity) VALUES
+(4, 12, 200.00), -- 200g de espagueti
+(4, 3, 10.00),   -- 1 diente de ajo
+(4, 7, 200.00),  -- 1 pechuga de pollo
+(4, 15, 15.00),  -- 1 cucharada de aceite vegetal
+(4, 13, 50.00);  -- 50g de queso Oaxaca
