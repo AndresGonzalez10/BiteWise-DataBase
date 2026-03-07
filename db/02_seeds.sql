@@ -1,4 +1,4 @@
--- 1. USUARIO DE PRUEBA (Para que no fallen las relaciones)
+-- 1. USUARIO DE PRUEBA 
 INSERT INTO users (id, name, email, password_hash, role) VALUES 
 ('e58000a6-6735-443f-b02e-8a7c88872493', 'Andres', 'andres@test.com', 'hash123', 'estudiante');
 

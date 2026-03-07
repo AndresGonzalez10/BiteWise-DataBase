@@ -1,17 +1,18 @@
--- Habilitar extensión para IDs únicos si no existe
+-- Habilitar extensión para IDs únicos (UUID)
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- 2. Usuarios 
+-- 1. Usuarios 
 CREATE TABLE users (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name VARCHAR(20) NOT NULL,
     email VARCHAR(150) UNIQUE NOT NULL,
     password_hash TEXT NOT NULL,
     role VARCHAR(20) DEFAULT 'cliente',
+    weekly_budget DECIMAL(10,2) DEFAULT 0, 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 1. Ingredientes
+-- 2. Ingredientes 
 CREATE TABLE ingredients (
     id SERIAL PRIMARY KEY,
     author_id UUID REFERENCES users(id) ON DELETE CASCADE, 
